@@ -1,30 +1,32 @@
 import Header from "./Components/Header";
 import ProductList from "./Components/ProductList";
-import { BrowserRouter, Route, Router, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Cart from "./pages/Cart";
 import Login from "./Components/Login";
+import { selectUserName } from "./feature/auth/userSlice";
+import { useSelector } from "react-redux";
 
 function App() {
+  const userName = useSelector(selectUserName);
   return (
     <BrowserRouter>
-      <>
-        <Header />
-        <Login />
-        <Routes>
-          <Route
-            path="/home"
-            element={
-              <>
-                <ProductList value="jewelery" />
-                <ProductList value="men's clothing" />
-                <ProductList value="women's clothing" />
-                <ProductList value="electronics" />
-              </>
-            }
-          />
-          <Route path="/cart" element={<Cart />} />
-        </Routes>
-      </>
+      <Routes>
+        <Route path="/" element={<Login />} />
+
+        <Route
+          path="/home"
+          element={
+            <>
+              <Header />
+              <ProductList value="jewelery" />
+              <ProductList value="men's clothing" />
+              <ProductList value="women's clothing" />
+              <ProductList value="electronics" />
+            </>
+          }
+        />
+        <Route path="/cart" element={<Cart />} />
+      </Routes>
     </BrowserRouter>
   );
 }

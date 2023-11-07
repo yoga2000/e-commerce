@@ -1,18 +1,42 @@
 import React from "react";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { Search, SearchOutlined } from "@mui/icons-material";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import { signOut } from "firebase/auth";
+import { SetUserLogOutState, selectUserName } from "../feature/auth/userSlice";
+import { auth } from "../firebase";
 
+const logOut = async (dispatch) => {
+  try {
+    await signOut(auth);
+    dispatch(SetUserLogOutState());
+    return true;
+  } catch (err) {
+    console.log(err);
+    return false;
+  }
+};
 const Header = () => {
   const cartItem = useSelector((state) => state.cart.items);
-  console.log(...cartItem);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const handleLogout = async () => {
+    const success = await logOut(dispatch);
+
+    if (success) {
+      navigate("/", { replace: true }); // Navigate to home after successful logout
+    } else {
+      // Handle the failure scenario if needed
+      console.error("Logout failed");
+    }
+  };
 
   return (
     <nav className="bg-gray-800 p-4 shadow-md top-0 sticky z-50 w-full mb-6   ">
       <div className="container mx-auto flex  items-center justify-around">
         <Link
-          to="/"
+          to="/home"
           className="p-2 animation-bounce text-base rounded-lg duration-150 cursor-pointer text-white font-semibold  md:text-xl sm:text-lg hover:bg-indigo-500"
         >
           Online Store
@@ -30,7 +54,10 @@ const Header = () => {
           </div>
         </div>
         <div className="hidden md:flex items-center cursor-pointer  space-x-4">
-          <button className="text-white  p-2 rounded-lg duration-150 hover:bg-indigo-500 hover:scale-105 ">
+          <button
+            onClick={handleLogout}
+            className="text-white  p-2 rounded-lg duration-150 hover:bg-indigo-500 hover:scale-105 "
+          >
             log out
           </button>
           <Link to="/cart">

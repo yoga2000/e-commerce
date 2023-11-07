@@ -1,31 +1,55 @@
 import React from "react";
 import { auth, provider } from "../firebase";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  setActiveUser,
-  SetUserLogOutState,
-  selectUserEmail,
-  selectUserName,
-} from "../feature/auth/userSlice";
+import { signInWithPopup } from "firebase/auth";
+import { Navigate } from "react-router-dom";
+import { setActiveUser, selectUserName } from "../feature/auth/userSlice";
 
 const Login = () => {
   const dispatch = useDispatch();
   const userName = useSelector(selectUserName);
-  const userEmail = useSelector(selectUserEmail);
-  const handleSignIn = () => {
-    auth.signInWthPopup(provider).then((result) => {
+
+  const handleSignIn = async () => {
+    try {
+      const result = await signInWithPopup(auth, provider);
+
+      console.log("Sign-in successful:", result.user.displayName);
       dispatch(
         setActiveUser({
           userName: result.user.displayName,
           userEmail: result.user.email,
         })
       );
-    });
+    } catch (error) {
+      // Handle errors
+      console.error("Error signing in with Google:", error);
+    }
   };
+
   return (
-    <div className="m-auto">
-      <button onClick={handleSignIn}>SignIN with Google</button>
-    </div>
+    <>
+      {userName ? (
+        <Navigate to="/home" replace={true} />
+      ) : (
+        <div className="hero min-h-screen bg-gradient-to-br from-purple-500  via-fuchsia-500 to-indigo-500">
+          <div className="hero-content text-center">
+            <div className="max-w-sm sm:max-w-lg">
+              <h1 className="text-3xl sm:text-5xl font-bold ">
+                "ONLINE STORE!"
+              </h1>
+              <p className="py-6 font-bold">
+                "Be the first to know about our latest products, special offers,
+                and exclusive discounts! Sign up to get access and elevate your
+                shopping experience today."
+              </p>
+              <button onClick={handleSignIn} className="btn btn-primary">
+                Sign in with Google
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 
