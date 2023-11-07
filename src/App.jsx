@@ -25,7 +25,15 @@ function App() {
             </>
           }
         />
-        <Route path="/cart" element={<Cart />} />
+        <Route
+          path="/cart"
+          element={
+            <>
+              <Header />
+              <Cart />
+            </>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );

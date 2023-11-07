@@ -58,7 +58,7 @@ const Header = () => {
             onClick={handleLogout}
             className="text-white  p-2 rounded-lg duration-150 hover:bg-indigo-500 hover:scale-105 "
           >
-            log out
+            Signout
           </button>
           <Link to="/cart">
             <a className="text-white  rounded-lg p-2 duration-150 flex space-x-1 hover:bg-indigo-500 hover:scale-105 ">
