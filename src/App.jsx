@@ -5,6 +5,7 @@ import Cart from "./pages/Cart";
 import Login from "./Components/Login";
 import { selectUserName } from "./feature/auth/userSlice";
 import { useSelector } from "react-redux";
+import ProductPage from "./pages/ProductPage";
 
 function App() {
   const userName = useSelector(selectUserName);
@@ -18,9 +19,9 @@ function App() {
           element={
             <>
               <Header />
-              <ProductList value="jewelery" />
               <ProductList value="men's clothing" />
               <ProductList value="women's clothing" />
+              <ProductList value="jewelery" />
               <ProductList value="electronics" />
             </>
           }
@@ -34,6 +35,7 @@ function App() {
             </>
           }
         />
+        <Route path="/product/:productId" element={<ProductPage />} />
       </Routes>
     </BrowserRouter>
   );

@@ -42,7 +42,15 @@ const Login = () => {
                 and exclusive discounts! Sign up to get access and elevate your
                 shopping experience today."
               </p>
-              <button onClick={handleSignIn} className="btn btn-primary">
+              <button
+                onClick={handleSignIn}
+                className="btn w-[375px] text-lg  font-bold btn-primary h-[70px] glass "
+              >
+                <img
+                  className="w-16 h-16 object-contain "
+                  src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png"
+                  alt=""
+                />
                 Sign in with Google
               </button>
             </div>

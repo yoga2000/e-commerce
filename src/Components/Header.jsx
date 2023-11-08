@@ -42,7 +42,7 @@ const Header = () => {
           Online Store
         </Link>
 
-        <div className="relative bg-white flex-intial text-xs sm:text-base font-semibold font-sans rounded w-[200px] sm:w-[300px] lg:w-[500px] xl:w-[800px]   ">
+        <div className="relative bg-white flex-intial text-xs sm:text-base  font-semibold font-sans rounded w-[200px] sm:w-[300px] lg:w-[500px] xl:w-[800px]   ">
           <input
             type="text"
             placeholder="Search for products..."
@@ -56,16 +56,17 @@ const Header = () => {
         <div className="hidden md:flex items-center cursor-pointer  space-x-4">
           <button
             onClick={handleLogout}
-            className="text-white  p-2 rounded-lg duration-150 hover:bg-indigo-500 hover:scale-105 "
+            className="text-white sm:text-lg p-2 rounded-lg duration-150 hover:bg-indigo-500 hover:scale-105 "
           >
             Signout
           </button>
-          <Link to="/cart">
-            <a className="text-white  rounded-lg p-2 duration-150 flex space-x-1 hover:bg-indigo-500 hover:scale-105 ">
-              <ShoppingCartIcon className="pointer-event-none" />
-              <p>Cart</p>
-              <p>{cartItem.length}</p>
-            </a>
+          <Link
+            to="/cart"
+            className="text-white sm:text-lg items-center rounded-lg p-2 duration-150 flex space-x-1 hover:bg-indigo-500 hover:scale-105 "
+          >
+            <ShoppingCartIcon className="pointer-event-none" />
+            <p>Cart</p>
+            <p>{cartItem.length}</p>
           </Link>
         </div>
       </div>
