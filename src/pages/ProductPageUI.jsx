@@ -9,17 +9,24 @@ const ProductPageUI = ({ data }) => {
   const navigate = useNavigate();
   return (
     <div className="hero min-h-screen bg-base-200">
-      <div className="hero-content flex-col lg:flex-row">
-        <img src={data.image} className="max-w-sm rounded-lg shadow-2xl" />
+      <div className="hero-content flex-col sm:flex-row">
+        <img
+          src={data.image}
+          className="max-w-[250px] lg:max-w-sm rounded-lg shadow-2xl"
+        />
         <div>
-          <h1 className="text-5xl font-bold">{data.title}</h1>
-          <p className="py-6">{data.description}</p>
-          <p className=" text-amber-500 text-3xl pb-4">${data.price}</p>
+          <h1 className=" text-xl lg:text-5xl font-bold">{data.title}</h1>
+          <p className="py-6 text-black text-sm lg:text-lg text-clip font-semibold ">
+            {data.description}
+          </p>
+          <p className=" text-xl text-amber-500 sm:text-3xl font-bold pb-4">
+            ${data.price}
+          </p>
 
-          <div className="flex space-x-12">
+          <div className="flex space-x-4 sm:space-x-12">
             <button
               onClick={() => navigate("/home")}
-              className="btn btn-primary"
+              className="btn  btn-primary btn-sm lg:btn-lg"
             >
               Back to home
             </button>
@@ -28,7 +35,7 @@ const ProductPageUI = ({ data }) => {
                 dispatch(addItem(data));
                 navigate("/cart");
               }}
-              className="btn btn-primary"
+              className="btn btn-primary btn-sm lg:btn-lg"
             >
               Add to Cart
             </button>

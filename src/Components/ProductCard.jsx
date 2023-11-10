@@ -24,9 +24,7 @@ const ProductCard = ({ data }) => {
             <h2 className="text-sm md:text-md font-semibold text-center truncate">
               {data.title}
             </h2>
-            {/* <p className="text-sm md:text-base font-light  text-slate-600 truncate">
-            {data.description}
-          </p> */}
+
             <div className="flex justify-between items-center mt-4">
               <span className="text-md md:text-lg font-semibold  text-[#ff6d00]">
                 ${data.price}

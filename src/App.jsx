@@ -19,6 +19,7 @@ function App() {
           element={
             <>
               <Header />
+
               <ProductList value="men's clothing" />
               <ProductList value="women's clothing" />
               <ProductList value="jewelery" />

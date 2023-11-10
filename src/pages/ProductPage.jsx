@@ -1,13 +1,10 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  error,
   getProductFailure,
   getProductStart,
   getProductSuccess,
-  loading,
-  product,
-} from "../feature/Productpage/ProductSlice";
+} from "../feature/Productpage/productSlice";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import ProductPageUI from "./ProductPageUI";

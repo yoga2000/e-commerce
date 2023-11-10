@@ -27,7 +27,6 @@ const Header = () => {
     if (success) {
       navigate("/", { replace: true }); // Navigate to home after successful logout
     } else {
-      // Handle the failure scenario if needed
       console.error("Logout failed");
     }
   };
@@ -53,7 +52,7 @@ const Header = () => {
             <SearchOutlined />
           </div>
         </div>
-        <div className="hidden md:flex items-center cursor-pointer  space-x-4">
+        <div className="hidden md:flex items-center  cursor-pointer  space-x-4">
           <button
             onClick={handleLogout}
             className="text-white sm:text-lg p-2 rounded-lg duration-150 hover:bg-indigo-500 hover:scale-105 "
@@ -69,6 +68,23 @@ const Header = () => {
             <p>{cartItem.length}</p>
           </Link>
         </div>
+      </div>
+      <div className="flex space-x-56 sm:hidden justify-center items-center">
+        <Link
+          to="/cart"
+          className="text-white p-1 items-center rounded-lg duration-150 flex space-x-1 hover:bg-indigo-500 hover:scale-105 "
+        >
+          <ShoppingCartIcon className="pointer-event-none" />
+          <p>Cart</p>
+          <p>{cartItem.length}</p>
+        </Link>
+
+        <button
+          onClick={handleLogout}
+          className="text-white sm:text-lg p-1 rounded-lg duration-150 hover:bg-indigo-500 hover:scale-105 "
+        >
+          Signout
+        </button>
       </div>
     </nav>
   );

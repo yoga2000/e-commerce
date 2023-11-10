@@ -21,7 +21,6 @@ const Login = () => {
         })
       );
     } catch (error) {
-      // Handle errors
       console.error("Error signing in with Google:", error);
     }
   };
@@ -44,12 +43,12 @@ const Login = () => {
               </p>
               <button
                 onClick={handleSignIn}
-                className="btn w-[375px] text-lg  font-bold btn-primary h-[70px] glass "
+                className="btn btn-xs  sm:w-[375px] text-lg  font-bold btn-primary h-[70px] glass "
               >
                 <img
                   className="w-16 h-16 object-contain "
                   src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png"
-                  alt=""
+                  alt="google icon"
                 />
                 Sign in with Google
               </button>
