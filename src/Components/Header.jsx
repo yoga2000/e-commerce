@@ -32,8 +32,8 @@ const Header = () => {
   };
 
   return (
-    <nav className="bg-gray-800 p-4 shadow-md top-0 sticky z-50 w-full mb-6   ">
-      <div className="container mx-auto flex  items-center justify-around">
+    <nav className="bg-gray-800 h-[80px] lg:px-4 pl-8  mx-auto flex items-center    shadow-md top-0 sticky z-50 w-full mb-6   ">
+      <div className="container  flex max-w-7xl w-full mx-auto items-center justify-between">
         <Link
           to="/home"
           className="p-2 animation-bounce text-base rounded-lg duration-150 cursor-pointer text-white font-semibold  md:text-xl sm:text-lg hover:bg-indigo-500"
@@ -41,7 +41,7 @@ const Header = () => {
           Online Store
         </Link>
 
-        <div className="relative bg-white flex-intial text-xs sm:text-base  font-semibold font-sans rounded w-[200px] sm:w-[300px] lg:w-[500px] xl:w-[800px]   ">
+        {/* <div className="relative bg-white flex-intial text-xs sm:text-base  font-semibold font-sans rounded w-[200px] sm:w-[300px] lg:w-[500px] xl:w-[800px]   ">
           <input
             type="text"
             placeholder="Search for products..."
@@ -51,8 +51,8 @@ const Header = () => {
           <div className="absolute bottom-[20%] right-0 pointer-events-none  px-2 ">
             <SearchOutlined />
           </div>
-        </div>
-        <div className="hidden md:flex items-center  cursor-pointer  space-x-4">
+        </div> */}
+        <div className=" flex items-center  cursor-pointer justify-evenly max-w-[250px] w-full sm:max-w-sm">
           <button
             onClick={handleLogout}
             className="text-white sm:text-lg p-2 rounded-lg duration-150 hover:bg-indigo-500 hover:scale-105 "
@@ -69,7 +69,7 @@ const Header = () => {
           </Link>
         </div>
       </div>
-      <div className="flex space-x-56 sm:hidden justify-center items-center">
+      {/* <div className="flex space-x-56 sm:hidden justify-center items-center">
         <Link
           to="/cart"
           className="text-white p-1 items-center rounded-lg duration-150 flex space-x-1 hover:bg-indigo-500 hover:scale-105 "
@@ -85,7 +85,7 @@ const Header = () => {
         >
           Signout
         </button>
-      </div>
+      </div> */}
     </nav>
   );
 };
