@@ -1,91 +1,30 @@
 import React from "react";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { Search, SearchOutlined } from "@mui/icons-material";
-import { Link, useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { signOut } from "firebase/auth";
-import { SetUserLogOutState, selectUserName } from "../feature/auth/userSlice";
-import { auth } from "../firebase";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-const logOut = async (dispatch) => {
-  try {
-    await signOut(auth);
-    dispatch(SetUserLogOutState());
-    return true;
-  } catch (err) {
-    console.log(err);
-    return false;
-  }
-};
 const Header = () => {
   const cartItem = useSelector((state) => state.cart.items);
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const handleLogout = async () => {
-    const success = await logOut(dispatch);
-
-    if (success) {
-      navigate("/", { replace: true }); // Navigate to home after successful logout
-    } else {
-      console.error("Logout failed");
-    }
-  };
 
   return (
-    <nav className="bg-gray-800 h-[80px] lg:px-4 pl-8  mx-auto flex items-center    shadow-md top-0 sticky z-50 w-full mb-6   ">
-      <div className="container  flex max-w-7xl w-full mx-auto items-center justify-between">
+    <nav className="bg-gray-800 h-[80px]    flex items-center    shadow-md top-0 sticky z-50 w-full mb-6   ">
+      <div className="container max-w-md  flex sm:max-w-7xl mx-auto items-center justify-between">
         <Link
-          to="/home"
-          className="p-2 animation-bounce text-base rounded-lg duration-150 cursor-pointer text-white font-semibold  md:text-xl sm:text-lg hover:bg-indigo-500"
+          to="/"
+          className="p-2  text-base rounded-lg duration-150 cursor-pointer text-white font-semibold  md:text-xl sm:text-lg hover:bg-indigo-500"
         >
           Online Store
         </Link>
 
-        {/* <div className="relative bg-white flex-intial text-xs sm:text-base  font-semibold font-sans rounded w-[200px] sm:w-[300px] lg:w-[500px] xl:w-[800px]   ">
-          <input
-            type="text"
-            placeholder="Search for products..."
-            className="p-2 ml-3 border  bg-transparent outline-none border-none w-full"
-          />
-
-          <div className="absolute bottom-[20%] right-0 pointer-events-none  px-2 ">
-            <SearchOutlined />
-          </div>
-        </div> */}
-        <div className=" flex items-center  cursor-pointer justify-evenly max-w-[250px] w-full sm:max-w-sm">
-          <button
-            onClick={handleLogout}
-            className="text-white sm:text-lg p-2 rounded-lg duration-150 hover:bg-indigo-500 hover:scale-105 "
-          >
-            Signout
-          </button>
-          <Link
-            to="/cart"
-            className="text-white sm:text-lg items-center rounded-lg p-2 duration-150 flex space-x-1 hover:bg-indigo-500 hover:scale-105 "
-          >
-            <ShoppingCartIcon className="pointer-event-none" />
-            <p>Cart</p>
-            <p>{cartItem.length}</p>
-          </Link>
-        </div>
-      </div>
-      {/* <div className="flex space-x-56 sm:hidden justify-center items-center">
         <Link
           to="/cart"
-          className="text-white p-1 items-center rounded-lg duration-150 flex space-x-1 hover:bg-indigo-500 hover:scale-105 "
+          className="text-white sm:text-lg items-center rounded-lg p-2 duration-150 flex space-x-1 hover:bg-indigo-500 hover:scale-105 "
         >
           <ShoppingCartIcon className="pointer-event-none" />
           <p>Cart</p>
           <p>{cartItem.length}</p>
         </Link>
-
-        <button
-          onClick={handleLogout}
-          className="text-white sm:text-lg p-1 rounded-lg duration-150 hover:bg-indigo-500 hover:scale-105 "
-        >
-          Signout
-        </button>
-      </div> */}
+      </div>
     </nav>
   );
 };

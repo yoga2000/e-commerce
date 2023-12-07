@@ -34,7 +34,7 @@ const ProductPage = () => {
   }, [dispatch, productId]);
 
   if (isLoading) {
-    return <p>Loading...</p>; // Consider using a spinner or loading component
+    return <p>Loading...</p>;
   }
 
   if (!productDetails || Object.keys(productDetails).length === 0) {

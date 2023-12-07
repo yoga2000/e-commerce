@@ -11,7 +11,7 @@ const CartUI = () => {
           Your online store shopping cart is empty
         </p>
         <button
-          onClick={() => navigate("/home")}
+          onClick={() => navigate("/")}
           className="btn btn-outline btn-accent btn-xs sm:btn-sm md:btn-md "
         >
           shop for items
