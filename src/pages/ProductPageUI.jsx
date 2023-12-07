@@ -8,7 +8,7 @@ const ProductPageUI = ({ data }) => {
 
   const navigate = useNavigate();
   return (
-    <div className="hero min-h-screen bg-base-200">
+    <div className="hero min-h-screen">
       <div className="hero-content flex-col mix-blend-multiply sm:flex-row">
         <img
           src={data.image}
@@ -16,7 +16,7 @@ const ProductPageUI = ({ data }) => {
         />
         <div>
           <h1 className=" text-xl  lg:text-5xl font-bold">{data.title}</h1>
-          <p className="py-6 text-black text-sm lg:text-lg text-clip font-semibold ">
+          <p className="py-6  text-sm lg:text-lg text-clip font-semibold ">
             {data.description}
           </p>
           <p className=" text-xl text-amber-500 sm:text-3xl font-bold pb-4">
