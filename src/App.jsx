@@ -3,8 +3,17 @@ import ProductList from "./Components/ProductList";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Cart from "./pages/Cart";
 import ProductPage from "./pages/ProductPage";
+import React, { useState } from "react";
 
 function App() {
+  const [searchTerm, setSearchTerm] = useState("");
+  const inputChange = (query) => {
+    setSearchTerm(query);
+    setTimeout(() => {
+      setSearchTerm("");
+    }, 5000);
+  };
+
   return (
     <BrowserRouter>
       <Routes>
@@ -12,12 +21,11 @@ function App() {
           path="/"
           element={
             <>
-              <Header />
-
-              <ProductList value="men's clothing" />
-              <ProductList value="women's clothing" />
-              <ProductList value="jewelery" />
-              <ProductList value="electronics" />
+              <Header inputChange={inputChange} value={searchTerm} />
+              <ProductList value="men's clothing" searchQuery={searchTerm} />
+              <ProductList value="women's clothing" searchQuery={searchTerm} />
+              <ProductList value="jewelery" searchQuery={searchTerm} />
+              <ProductList value="electronics" searchQuery={searchTerm} />
             </>
           }
         />
@@ -25,8 +33,7 @@ function App() {
           path="/cart"
           element={
             <>
-              <Header />
-              <Cart />
+              <Header inputChange={inputChange} value={searchTerm} />
             </>
           }
         />

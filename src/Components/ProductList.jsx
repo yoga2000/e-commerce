@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
-import { Link } from "react-router-dom";
 
-const ProductList = (props) => {
+const ProductList = ({ value, searchQuery }) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    const apiURL = `https://fakestoreapi.com/products/category/${props.value}`;
+    const apiURL = `https://fakestoreapi.com/products/category/${value}`;
     fetch(apiURL)
       .then((response) => {
         if (!response.ok) {
@@ -20,16 +19,22 @@ const ProductList = (props) => {
       .catch((err) => {
         console.error("err fecthing data", err);
       });
-  }, []);
+  }, [searchQuery]);
+  const filteredData = data.filter((item) =>
+    searchQuery.toLowerCase() === ""
+      ? item
+      : item.title.toLowerCase().includes(searchQuery)
+  );
+
   return (
-    <div className=" pb-4  shadow-lg z-50 ">
+    <div className=" pb-4  shadow-lg z-50  ">
       {/* listing card */}
       <div className=" text-lg marker:md:text-xl font-semibold uppercase  bg-white text-center text-purple-700 shadow-md py-2 lg:text-2xl">
-        {props.value}
+        {value}
       </div>
 
       <div className=" flex-col  flex sm:flex-row sm:flex-wrap sm:flex lg:flex lg:flex-wrap  ">
-        {data.map((item) => (
+        {filteredData.map((item) => (
           <ProductCard key={item.id} data={item} />
         ))}
       </div>
