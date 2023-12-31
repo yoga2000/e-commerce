@@ -31,6 +31,8 @@ function App() {
           element={
             <>
               <Header inputChange={inputChange} value={searchTerm} />
+
+              <Cart />
             </>
           }
         />
