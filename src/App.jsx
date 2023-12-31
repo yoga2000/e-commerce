@@ -9,9 +9,6 @@ function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const inputChange = (query) => {
     setSearchTerm(query);
-    setTimeout(() => {
-      setSearchTerm("");
-    }, 5000);
   };
 
   return (

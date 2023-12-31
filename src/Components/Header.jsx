@@ -15,7 +15,7 @@ const Header = ({ value, inputChange }) => {
         >
           Online Store
         </Link>
-        <div className=" hidden lg:flex w-full items-center  shadow-lg max-w-2xl mx-auto mb-4 sticky">
+        <div className=" hidden lg:flex w-full items-center  shadow-lg max-w-2xl mx-auto mb-4 relative">
           <input
             type="text"
             placeholder="search..."
@@ -23,7 +23,7 @@ const Header = ({ value, inputChange }) => {
             onChange={(e) => inputChange(e.target.value)}
             className="p-2 w-full rounded-md text-black"
           />
-          <SearchIcon className=" right-0 mr-4 absolute" />
+          <SearchIcon className=" right-0 mr-4 absolute pointer-events-none" />
         </div>
         <Link
           to="/cart"
